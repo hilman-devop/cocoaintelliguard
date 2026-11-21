@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CocoaIntelliGuard - Dashboard Pemantau Kebun Kakao</title>
+    <meta name="description" content="Sistem monitoring kesehatan tanaman kakao real-time berbasis Edge AI dan Cloud Predictive Intelligence">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Leaflet.js CDN (Peta Kebun) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <svg class="logo-svg" fill="none" viewBox="0 0 24 24" stroke="#10b981" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                </div>
+                <div class="logo-text">Cocoa<span>Guard</span></div>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" id="nav-dashboard">
+                    <svg class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z" />
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#section-map" class="nav-item" id="nav-map">
+                    <svg class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span>Peta Kebun</span>
+                </a>
+                <a href="#section-recs" class="nav-item" id="nav-recs">
+                    <svg class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    <span>Rekomendasi</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <p>PKM-KC 2026</p>
+                <span>UM Jember</span>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="main-header">
+                <div class="header-title">
+                    <h1>Sistem Prediksi Cloud</h1>
+                    <p>Pemantauan Kesehatan Kakao Real-time</p>
+                </div>
+                <div class="status-indicator">
+                    <span class="pulse-dot"></span>
+                    <span id="connection-status">Menghubungkan ke Firebase...</span>
+                </div>
+            </header>
+
+            <!-- Stats Grid -->
+            <section class="stats-grid">
+                <div class="stat-card" id="card-total">
+                    <div class="stat-icon">
+                        <svg class="card-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <div class="stat-details">
+                        <h3>Total Pemindaian</h3>
+                        <p class="stat-number" id="stat-total-scans">1,644</p>
+                        <span class="stat-trend trend-neutral">Pemindaian aktif</span>
+                    </div>
+                </div>
+                <div class="stat-card" id="card-healthy">
+                    <div class="stat-icon">
+                        <svg class="card-icon healthy" fill="none" viewBox="0 0 24 24" stroke="#10b981" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        </svg>
+                    </div>
+                    <div class="stat-details">
+                        <h3>Kakao Sehat</h3>
+                        <p class="stat-number" id="stat-healthy">668</p>
+                        <span class="stat-trend trend-up">Kondisi baik</span>
+                    </div>
+                </div>
+                <div class="stat-card" id="card-diseased">
+                    <div class="stat-icon">
+                        <svg class="card-icon diseased" fill="none" viewBox="0 0 24 24" stroke="#f43f5e" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                    </div>
+                    <div class="stat-details">
+                        <h3>Terinfeksi Penyakit</h3>
+                        <p class="stat-number" id="stat-diseased">976</p>
+                        <span class="stat-trend trend-down" id="stat-diseased-pct">59.3% Butuh Penanganan</span>
+                    </div>
+                </div>
+                <div class="stat-card" id="card-accuracy">
+                    <div class="stat-icon">
+                        <svg class="card-icon accuracy" fill="none" viewBox="0 0 24 24" stroke="#fbbf24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <div class="stat-details">
+                        <h3>Rata-rata Akurasi</h3>
+                        <p class="stat-number" id="stat-accuracy">99.1%</p>
+                        <span class="stat-trend trend-up">TFLite Optimized</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grid Konten Utama (Chart & Map) -->
+            <div class="content-grid">
+                <!-- Chart Area -->
+                <div class="content-card chart-area-wrapper">
+                    <div class="card-header">
+                        <h2>Tren Sebaran Penyakit</h2>
+                        <span class="card-subtitle">Statistik Deteksi Mingguan</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="diseaseChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Map Area -->
+                <div class="content-card map-area-wrapper" id="section-map">
+                    <div class="card-header">
+                        <h2>Peta Sebaran Infeksi Kebun</h2>
+                        <span class="card-subtitle">Titik lokasi pohon sakit yang terdeteksi</span>
+                    </div>
+                    <div class="map-container-wrapper">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bagian Log Riwayat & Rekomendasi -->
+            <div class="secondary-grid">
+                <!-- Log Pemindaian Terakhir -->
+                <div class="content-card log-area-wrapper">
+                    <div class="card-header">
+                        <h2>Riwayat Pemindaian Terbaru</h2>
+                        <span class="card-subtitle">Data real-time dari ESP32-CAM</span>
+                    </div>
+                    <div class="table-container">
+                        <table class="log-table">
+                            <thead>
+                                <tr>
+                                    <th>Waktu</th>
+                                    <th>Diagnosis</th>
+                                    <th>Tingkat Keyakinan</th>
+                                    <th>Lokasi</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="log-table-body">
+                                <!-- Data akan diisi oleh app.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Modul Rekomendasi Penanganan -->
+                <div class="content-card recommendations-wrapper" id="section-recs">
+                    <div class="card-header">
+                        <h2>Panduan Penanganan Cepat</h2>
+                        <span class="card-subtitle">Rekomendasi berdasarkan diagnosis aktif</span>
+                    </div>
+                    <div class="recs-tabs">
+                        <button class="rec-tab-btn active" onclick="switchRec('busuk_buah', this)">Busuk Buah</button>
+                        <button class="rec-tab-btn" onclick="switchRec('vsd', this)">VSD</button>
+                        <button class="rec-tab-btn" onclick="switchRec('kanker_batang', this)">Kanker Batang</button>
+                    </div>
+                    <div class="rec-content" id="rec-display-content">
+                        <!-- Konten diisi oleh app.js -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Firebase SDK (v9 Compatibility / UMD format) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
