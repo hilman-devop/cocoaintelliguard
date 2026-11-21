@@ -1,29 +1,56 @@
-# CocoaIntelliGuard — Deteksi Penyakit Kakao Edge AI
+# CocoaIntelliGuard
 
-> Sistem deteksi penyakit buah dan daun kakao berbasis ESP32-CAM dengan inferensi offline di perangkat dan dashboard pemantau.
+![Python](https://img.shields.io/badge/Python-2f81f7?style=flat) ![Computer Vision](https://img.shields.io/badge/Computer_Vision-2f81f7?style=flat) ![Edge AI](https://img.shields.io/badge/Edge_AI-2f81f7?style=flat) ![Roboflow](https://img.shields.io/badge/Roboflow-2f81f7?style=flat)
 
-## ✨ Fitur
+> Eksperimen deteksi penyakit kakao dari dataset, preprocessing, pencarian data, dan evaluasi model.
 
-- Inferensi TFLite on-device (MobileNetV2)
-- Pipeline pelatihan model di Python
-- Dashboard pemantau (Chart.js + Leaflet)
-- Kalibrasi dan preprocessing dataset
-- Diajukan sebagai PKM-Karsa Cipta 2026
+## Tentang proyek
 
-## 🛠 Tech Stack
+Eksperimen deteksi penyakit kakao dari dataset, preprocessing, pencarian data, dan evaluasi model. Dokumentasi ini dibuat sebagai panduan singkat untuk memahami ruang lingkup proyek, menjalankannya secara lokal, dan membaca batasan penggunaannya.
 
-"ESP32-CAM" "TensorFlow Lite" "MobileNetV2" "PlatformIO" "Python" "Chart.js"
+## Fitur utama
 
-## 🚀 Menjalankan
+- Pipeline download dan preprocessing dataset
+- Eksperimen pencarian serta validasi data
+- Struktur script terpisah untuk eksperimen
+- Dirancang agar model dapat dibawa ke perangkat edge
 
+## Teknologi
+
+- Python
+- Computer Vision
+- Edge AI
+- Roboflow
+
+## Menjalankan secara lokal
+
+Prasyarat dan konfigurasi dapat berbeda menurut sistem operasi. Contoh langkah utama:
+
+```bash
+pip install -r requirements.txt
+python Ibad/scripts/preprocess.py
 ```
-pip install -r requirements.txt   # pipeline dataset
-# buka Ibad/ dengan PlatformIO untuk firmware
-python train.py
-```
 
-## 📌 Catatan
+## Struktur dan pengembangan
 
-Proyek ini merupakan bagian dari portofolio pribadi. Kode disusun untuk kebutuhan nyata,
-bukan sekadar demo, sehingga sebagian konfigurasi spesifik lingkungan mungkin perlu
-disesuaikan sebelum dijalankan.
+Mulai dari entry point dan folder konfigurasi proyek. Pisahkan credential lokal dari source code, tambahkan test untuk perubahan penting, dan gunakan environment variable untuk konfigurasi deployment.
+
+## Keamanan
+
+- Jangan commit API key, password, token, session ID, atau data pribadi.
+- Gunakan file environment lokal dan contoh konfigurasi tanpa nilai rahasia.
+- Uji perubahan pada environment development sebelum deployment.
+
+## Status
+
+Proyek ini merupakan bagian dari portofolio **Hilman Arifin Ilham** dan dapat dikembangkan sesuai kebutuhan penggunaan.
+
+> **Catatan:** API key dataset harus disediakan melalui environment variable atau konfigurasi lokal. Jangan menaruh credential di source code.
+
+## Lisensi
+
+Belum ada lisensi open-source yang dinyatakan di repository ini. Hubungi pemilik repository sebelum menggunakan ulang atau mendistribusikan kode.
+
+---
+
+Dibuat oleh [Hilman Arifin Ilham](https://github.com/hilman-devop).
