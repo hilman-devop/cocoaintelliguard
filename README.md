@@ -1,55 +1,43 @@
-# CocoaIntelliGuard
+# CocoaIntelliGuard — Cocoa Leaf Disease Detection
 
-![Python](https://img.shields.io/badge/Python-2f81f7?style=flat) ![Computer Vision](https://img.shields.io/badge/Computer_Vision-2f81f7?style=flat) ![Edge AI](https://img.shields.io/badge/Edge_AI-2f81f7?style=flat) ![Roboflow](https://img.shields.io/badge/Roboflow-2f81f7?style=flat)
+> Workspace eksperimen computer vision untuk membantu mendeteksi penyakit daun kakao dan mengeksplorasi deployment AI di perangkat edge.
 
-> Eksperimen deteksi penyakit kakao dari dataset, preprocessing, pencarian data, dan evaluasi model.
+**Stack:** Python · Computer Vision · Edge AI
 
-## Tentang proyek
+## Ringkasan
 
-Eksperimen deteksi penyakit kakao dari dataset, preprocessing, pencarian data, dan evaluasi model. Dokumentasi ini dibuat sebagai panduan singkat untuk memahami ruang lingkup proyek, menjalankannya secara lokal, dan membaca batasan penggunaannya.
+Workspace eksperimen computer vision untuk membantu mendeteksi penyakit daun kakao dan mengeksplorasi deployment AI di perangkat edge.
 
 ## Fitur utama
 
-- Pipeline download dan preprocessing dataset
-- Eksperimen pencarian serta validasi data
-- Struktur script terpisah untuk eksperimen
-- Dirancang agar model dapat dibawa ke perangkat edge
-
-## Teknologi
-
-- Python
-- Computer Vision
-- Edge AI
-- Roboflow
+- Download dan preprocessing dataset
+- Eksperimen pencarian dan validasi data
+- Script eksperimen yang terpisah
+- Dokumentasi keputusan riset
+- Arah pengembangan menuju edge inference
 
 ## Menjalankan secara lokal
 
-Prasyarat dan konfigurasi dapat berbeda menurut sistem operasi. Contoh langkah utama:
-
-```bash
+~~~bash
+python -m venv .venv
+.venv\Scripts\activate
 pip install -r requirements.txt
 python Ibad/scripts/preprocess.py
-```
+~~~
 
-## Struktur dan pengembangan
+## Keamanan dan batasan
 
-Mulai dari entry point dan folder konfigurasi proyek. Pisahkan credential lokal dari source code, tambahkan test untuk perubahan penting, dan gunakan environment variable untuk konfigurasi deployment.
+API key dataset harus disediakan secara lokal. Jangan commit key, dataset privat, atau data identitas.
 
-## Keamanan
-
-- Jangan commit API key, password, token, session ID, atau data pribadi.
-- Gunakan file environment lokal dan contoh konfigurasi tanpa nilai rahasia.
-- Uji perubahan pada environment development sebelum deployment.
+Jangan commit API key, password, token, session ID, data pribadi, atau credential deployment.
 
 ## Status
 
-Proyek ini merupakan bagian dari portofolio **Hilman Arifin Ilham** dan dapat dikembangkan sesuai kebutuhan penggunaan.
-
-> **Catatan:** API key dataset harus disediakan melalui environment variable atau konfigurasi lokal. Jangan menaruh credential di source code.
+Project portfolio aktif oleh **Hilman Arifin Ilham**. Verifikasi ulang dependency dan konfigurasi sebelum deployment production.
 
 ## Lisensi
 
-Belum ada lisensi open-source yang dinyatakan di repository ini. Hubungi pemilik repository sebelum menggunakan ulang atau mendistribusikan kode.
+Belum ada lisensi open-source yang dinyatakan. Hubungi pemilik repository sebelum menggunakan ulang atau mendistribusikan kode.
 
 ---
 
