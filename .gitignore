@@ -47,3 +47,7 @@ logs/
 .pio/
 .pioenvs/
 
+# Local exports and machine-specific data.
+/project/dataset/
+/project/raw_data/
+/project/.env
