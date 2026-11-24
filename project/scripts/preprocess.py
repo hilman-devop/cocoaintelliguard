@@ -30,7 +30,7 @@ def show_roboflow_guide():
 
    from roboflow import Roboflow
    rf = Roboflow(api_key="MASUKKAN_API_KEY_KAMU_DISINI")
-   project = rf.workspace("itera-zghl1").project("tugas-akhir-hama-penyakit-kakao")
+   project = rf.workspace("workspace-anda").project("proyek-dataset-anda")
    dataset = project.version(1).download("folder")
    
    # Pindahkan gambar hasil unduhan ke folder 'dataset/' sesuai kelasnya.

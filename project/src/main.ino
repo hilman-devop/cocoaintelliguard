@@ -1,6 +1,6 @@
 /*
  * CocoaIntelliGuard - Firmware ESP32-CAM
- * PKM-KC 2026 - Universitas Muhammadiyah Jember
+ * PKM-KC 2026 - Perguruan Tinggi
  * 
  * Kodingan ini merupakan kerangka dasar untuk me-load model AI cacao_model.tflite
  * menggunakan TensorFlow Lite for Microcontrollers, mengambil gambar dari kamera OV2640,
@@ -31,7 +31,7 @@
   
   #define WIFI_SSID "NAMA_WIFI_KAMU"
   #define WIFI_PASSWORD "PASSWORD_WIFI_KAMU"
-  #define FIREBASE_HOST "pkm-kc-ibad-default-rtdb.firebaseio.com"
+  #define FIREBASE_HOST "your-project-default-rtdb.firebaseio.com"
   #define FIREBASE_AUTH "DATABASE_SECRET_TOKEN"
   
   FirebaseData firebaseData;
@@ -366,9 +366,9 @@ void loop() {
       json.set("confidence", max_val);
       json.set("timestamp", "/.info/serverTimeOffset");
       
-      // Simulasi koordinat kebun kakao di sekitar Puslitkoka Jember
-      json.set("latitude", -8.2582 + (((float)random(0, 100) - 50.0f) / 50000.0f));
-      json.set("longitude", 113.6163 + (((float)random(0, 100) - 50.0f) / 50000.0f));
+      // Simulasi koordinat kebun kakao di sekitar lokasi uji lapangan
+      json.set("latitude", 0.0 + (((float)random(0, 100) - 50.0f) / 50000.0f));
+      json.set("longitude", 0.0 + (((float)random(0, 100) - 50.0f) / 50000.0f));
 
       if (Firebase.pushJSON(firebaseData, "/detections", json)) {
         Serial.println("Data terunggah ke Firebase!");

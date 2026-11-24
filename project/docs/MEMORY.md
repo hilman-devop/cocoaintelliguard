@@ -6,7 +6,7 @@ Dokumen ini mencatat keputusan teknis, konfigurasi lingkungan, kredensial, dan s
 * **Versi Python**: Python 3.12 (PENTING: Jangan gunakan Python 3.14 karena TensorFlow belum menyediakannya secara resmi).
 * **Dependensi Utama**: `tensorflow`, `roboflow`, `matplotlib`, `pillow`.
 * **Platform Target**: ESP32-CAM (Edge AI lokal & Cloud prediction).
-* **PlatformIO Environment**: Menggunakan compiler VS Code PlatformIO IDE dengan file [platformio.ini](file:///c:/TheGame/Money/PKM/Ibad/platformio.ini) untuk auto-install dependensi C++ (`Adafruit GFX`, `Adafruit ST7735`, `Firebase ESP32 Client`, dan `TensorFlow Lite Micro`).
+* **PlatformIO Environment**: Menggunakan compiler VS Code PlatformIO IDE dengan file [platformio.ini](../platformio.ini) untuk auto-install dependensi C++ (`Adafruit GFX`, `Adafruit ST7735`, `Firebase ESP32 Client`, dan `TensorFlow Lite Micro`).
 
 ## 🔑 Kredensial & Sumber Dataset Roboflow
 * **Private API Key**: `ROBOFLOW_API_KEY_DISINI`
@@ -31,12 +31,12 @@ Dataset asli didekripsi dan digabung sehingga menghasilkan total **1.644 gambar 
 * **Array Header C++**: `models/cacao_model_data.h` (dibuat menggunakan `convert_to_header.py`).
 
 ## 🖥️ Web Dashboard Pemantau
-* **Lokasi**: [dashboard/](file:///c:/TheGame/Money/PKM/Ibad/dashboard/)
+* **Lokasi**: [dashboard/](../dashboard/)
 * **Teknologi**: HTML5, Vanilla CSS (Glassmorphism UI), Javascript, Chart.js, Leaflet.js.
 * **UI/UX Standar**: Fira Code & Fira Sans fonts, inline SVG icons (Lucide-based) untuk kejelasan visual data analitik.
 * **Mode Firebase & Demo**: Secara default berjalan dalam *Demo Mode* (simulasi data) jika URL database tidak diubah, namun otomatis sinkron saat Firebase Database SDK diaktifkan.
 
 ## 🔮 Rencana Pengembangan & Langkah Berikutnya
-1. **Pemasangan Firmware**: Membuka folder proyek di VS Code dengan ekstensi PlatformIO terpasang. PlatformIO akan otomatis membaca berkas [platformio.ini](file:///c:/TheGame/Money/PKM/Ibad/platformio.ini) dan mengunduh pustaka C++.
-2. **Koneksi Wi-Fi & Firebase**: Mengubah nilai `#define ENABLE_CLOUD` menjadi `true` di berkas [main.ino](file:///c:/TheGame/Money/PKM/Ibad/src/main.ino) dan melengkapi kredensial Wi-Fi & Firebase Host untuk pengujian di kebun nyata.
-3. **Penyusunan Berkas Laporan**: Menyalin data hasil latihan akurasi model (99.09%) dan diagram sistem untuk diserahkan ke Simbelmawa melalui [draft_laporan_kemajuan.md](file:///c:/TheGame/Money/PKM/Ibad/docs/draft_laporan_kemajuan.md).
+1. **Pemasangan Firmware**: Membuka folder proyek di VS Code dengan ekstensi PlatformIO terpasang. PlatformIO akan otomatis membaca berkas [platformio.ini](../platformio.ini) dan mengunduh pustaka C++.
+2. **Koneksi Wi-Fi & Firebase**: Mengubah nilai `#define ENABLE_CLOUD` menjadi `true` di berkas [main.ino](../src/main.ino) dan melengkapi kredensial Wi-Fi & Firebase Host untuk pengujian di kebun nyata.
+3. **Penyusunan Berkas Laporan**: Menyalin data hasil latihan akurasi model (99.09%) dan diagram sistem untuk diserahkan ke Simbelmawa melalui [draft_laporan_kemajuan.md](../docs/draft_laporan_kemajuan.md).

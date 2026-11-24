@@ -7,8 +7,8 @@ Semua perubahan dan perkembangan pada proyek PKM-KC ini dicatat di sini.
 ### Added
 * Membuat Web Dashboard pemantau kesehatan kebun kakao di folder `dashboard/` menggunakan **HTML5**, **Vanilla CSS (Glassmorphism)**, dan **Javascript**.
 * Mengintegrasikan grafik data tren menggunakan **Chart.js** dan peta lokasi pohon terinfeksi luring interaktif menggunakan **Leaflet.js**.
-* Menambahkan berkas konfigurasi **[platformio.ini](file:///c:/TheGame/Money/PKM/Ibad/platformio.ini)** di root proyek untuk mempermudah perakitan, build, dan flash firmware tanpa harus menggunakan Arduino IDE.
-* Menambahkan pustaka `Firebase ESP32 Client` ke dalam PlatformIO dan kode konektivitas Wi-Fi serta pengiriman JSON data ke Realtime Database di [main.ino](file:///c:/TheGame/Money/PKM/Ibad/src/main.ino) (dikendalikan via `#define ENABLE_CLOUD false`).
+* Menambahkan berkas konfigurasi **[platformio.ini](../platformio.ini)** di root proyek untuk mempermudah perakitan, build, dan flash firmware tanpa harus menggunakan Arduino IDE.
+* Menambahkan pustaka `Firebase ESP32 Client` ke dalam PlatformIO dan kode konektivitas Wi-Fi serta pengiriman JSON data ke Realtime Database di [main.ino](../src/main.ino) (dikendalikan via `#define ENABLE_CLOUD false`).
 
 ### Changed
 * Merancang ulang tampilan dashboard sesuai standar **UI/UX Pro Max**: Mengganti font bawaan menjadi **Fira Code** (headings & data) dan **Fira Sans** (body), serta mengganti seluruh emoji luring dengan **Inline SVG Icons** yang bersih dan profesional.

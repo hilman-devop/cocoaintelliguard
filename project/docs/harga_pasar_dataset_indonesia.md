@@ -1,7 +1,7 @@
 # Referensi Harga Pasar Dataset Gambar di Indonesia — PKM-KC 2026
 
 **Proyek**: CocoaIntelliGuard (Alat Deteksi Penyakit Kakao Portable Berbasis ESP32-CAM Edge AI)
-**Perguruan Tinggi**: Universitas Muhammadiyah Jember
+**Perguruan Tinggi**: Perguruan Tinggi
 **Tanggal Riset**: 24 Agustus 2026
 **Tujuan**: Dokumen referensi pembanding untuk PKM, **BUKAN rencana penjualan**.
 

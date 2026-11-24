@@ -1,9 +1,9 @@
 # Draft Laporan Kemajuan - PKM-KC 2026
 
 **Judul Proyek**: Alat Deteksi Penyakit Kakao Portable Berbasis ESP32-CAM Edge AI Processing dan Cloud Predictive Intelligence System (CocoaIntelliGuard)  
-**Perguruan Tinggi**: Universitas Muhammadiyah Jember  
-**Ketua Tim**: Ahmad Furqonul Ibad  
-**Dosen Pendamping**: Iswahyudi, S.T., M.T.  
+**Perguruan Tinggi**: Perguruan Tinggi
+**Ketua Tim**: Anggota Tim 1
+**Dosen Pendamping**: Dosen Pendamping
 
 ---
 
@@ -19,7 +19,7 @@ Hingga saat ini, proyek telah mencapai perkembangan yang sangat signifikan pada 
   1. **Dataset Kakao Sehat & Busuk Buah**: Diambil dari proyek Roboflow [tugas-akhir-hama-penyakit-kakao](https://universe.roboflow.com/itera-zghl1/tugas-akhir-hama-penyakit-kakao) oleh workspace `itera-zghl1` (Versi 1).
   2. **Dataset VSD (Vascular Streak Dieback)**: Diambil dari proyek Roboflow [terserang-vsd-daun-kakao](https://universe.roboflow.com/data-hamzah/terserang-vsd-daun-kakao) oleh workspace `data-hamzah` (Versi 2).
   3. **Dataset Kanker Batang**: Diambil dari proyek Roboflow [penyakit-fmvt8](https://universe.roboflow.com/rahmayani/penyakit-fmvt8) oleh workspace `rahmayani` (Versi 1).
-* Skrip otomatis [crop_dataset.py](file:///c:/TheGame/Money/PKM/Ibad/scripts/crop_dataset.py), [crop_vsd.py](file:///c:/TheGame/Money/PKM/Ibad/scripts/crop_vsd.py), dan [crop_canker.py](file:///c:/TheGame/Money/PKM/Ibad/scripts/crop_canker.py) berhasil memisahkan citra objek penyakit dari format deteksi/segmentasi YOLO/YOLOv8 menjadi kelas klasifikasi:
+* Skrip otomatis [crop_dataset.py](../scripts/crop_dataset.py), [crop_vsd.py](../scripts/crop_vsd.py), dan [crop_canker.py](../scripts/crop_canker.py) berhasil memisahkan citra objek penyakit dari format deteksi/segmentasi YOLO/YOLOv8 menjadi kelas klasifikasi:
   * Kakao Sehat (`sehat`): 668 gambar
   * Busuk Buah (`busuk_buah`): 438 gambar
   * Vascular Streak Dieback (`vsd`): 483 gambar
@@ -27,27 +27,27 @@ Hingga saat ini, proyek telah mencapai perkembangan yang sangat signifikan pada 
 
 ### B. Pelatihan Model CNN (Deep Learning)
 * Pelatihan model menggunakan teknik *Transfer Learning* berbasis arsitektur **MobileNetV2** yang sangat optimal untuk komputasi tepi (*edge computing*).
-* Model dilatih menggunakan skrip [train.py](file:///c:/TheGame/Money/PKM/Ibad/train.py) dengan pembagian data 80% latihan dan 20% validasi.
+* Model dilatih menggunakan skrip [train.py](../train.py) dengan pembagian data 80% latihan dan 20% validasi.
 * **Hasil Akurasi**: Mencapai **98.56% (Training)** dan **99.09% (Validation)** pada epoch ke-5 dengan 4 kelas aktif (3 penyakit + 1 sehat). Hasil ini melampaui standar kelayakan PKM-KC (target awal $\ge$90%).
 
 ### C. Optimalisasi Edge AI (TensorFlow Lite)
-* Model Keras yang besar berhasil dikonversi ke format **TensorFlow Lite terkuantisasi** ([cacao_model.tflite](file:///c:/TheGame/Money/PKM/Ibad/models/cacao_model.tflite)).
-* Ukuran model berhasil dipangkas menjadi hanya **2.4 MB**, menjadikannya sangat ringan untuk dijalankan secara luring (*offline*) langsung di dalam memori internal mikrokontroler **ESP32-CAM**. Untuk kebutuhan pemrograman C++ di mikrokontroler, data biner ini juga telah diekspor menjadi array byte C++ di file [cacao_model_data.h](file:///c:/TheGame/Money/PKM/Ibad/models/cacao_model_data.h).
+* Model Keras yang besar berhasil dikonversi ke format **TensorFlow Lite terkuantisasi** ([cacao_model.tflite](../models/cacao_model.tflite)).
+* Ukuran model berhasil dipangkas menjadi hanya **2.4 MB**, menjadikannya sangat ringan untuk dijalankan secara luring (*offline*) langsung di dalam memori internal mikrokontroler **ESP32-CAM**. Untuk kebutuhan pemrograman C++ di mikrokontroler, data biner ini juga telah diekspor menjadi array byte C++ di file [cacao_model_data.h](../models/cacao_model_data.h).
 
 ### D. Pengembangan Firmware Lokal & PlatformIO Workspace
-* Menyusun kode program Arduino C++ utama pada [main.ino](file:///c:/TheGame/Money/PKM/Ibad/src/main.ino) dengan fitur:
+* Menyusun kode program Arduino C++ utama pada [main.ino](../src/main.ino) dengan fitur:
   * Inisialisasi layar TFT LCD 1.44" ST7735 menggunakan software SPI (hemat pin & bebas konflik pembacaan kartu SD).
   * Pemrosesan citra dari kamera OV2640 ke format raw `PIXFORMAT_RGB565`.
   * Algoritma *Center Crop* (240x240) dan *Nearest-Neighbor Resizing* (224x224) untuk mencegah distorsi aspek rasio sebelum masuk ke tensor input model.
   * Normalisasi piksel float `[0,1]` ke dalam input buffer TFLite Micro.
-* Migrasi pemrograman firmware ke lingkungan **VS Code + PlatformIO IDE** lewat [platformio.ini](file:///c:/TheGame/Money/PKM/Ibad/platformio.ini) untuk mempermudah compile/upload otomatis tanpa ketergantungan pada Arduino IDE.
+* Migrasi pemrograman firmware ke lingkungan **VS Code + PlatformIO IDE** lewat [platformio.ini](../platformio.ini) untuk mempermudah compile/upload otomatis tanpa ketergantungan pada Arduino IDE.
 
 ### E. Pembangunan Dashboard Pemantau & Integrasi Cloud (Firebase)
 * Menyiapkan opsi integrasi Wi-Fi dan pengiriman payload data JSON secara real-time ke Firebase Realtime Database (dikendalikan via saklar makro `#define ENABLE_CLOUD` di firmware).
 * Membuat aplikasi **Web Dashboard Pemantau** luring/daring di direktori `dashboard/` menggunakan standar **UI/UX Pro Max** (Glassmorphism, Fira Code & Sans, Lucide-based inline SVG Icons). Web ini menampilkan:
   * Statistik ringkasan pemindaian total, sehat, sakit, dan akurasi model.
   * Grafik visualisasi sebaran tren deteksi harian/mingguan menggunakan **Chart.js**.
-  * Peta geospasial sebaran infeksi di kebun menggunakan **Leaflet.js** (pusat koordinat di kebun Puslitkoka Jember).
+  * Peta geospasial sebaran infeksi di kebun menggunakan **Leaflet.js** (pusat koordinat di kebun lokasi uji lapangan).
   * Tab interaktif rekomendasi penanganan otomatis dan log riwayat pemindaian real-time.
 
 ---
@@ -60,7 +60,7 @@ Hingga saat ini, proyek telah mencapai perkembangan yang sangat signifikan pada 
 2. **Koneksi Firebase Asli**:
    * Melakukan migrasi data dari Demo Mode (simulasi) di dashboard ke Firebase Realtime Database asli milik tim untuk uji coba sinkronisasi luring-daring di lapangan.
 3. **Uji Coba & Kalibrasi Lapangan**:
-   * Pengujian akurasi deteksi langsung di kebun kakao lokal Jember/Puslitkoka Jember untuk mengukur interferensi cahaya luar terhadap performa pembacaan model Edge AI.
+   * Pengujian akurasi deteksi langsung di kebun kakao lokal/lokasi uji lapangan untuk mengukur interferensi cahaya luar terhadap performa pembacaan model Edge AI.
 
 ---
 

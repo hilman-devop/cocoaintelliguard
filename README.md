@@ -18,12 +18,8 @@ Workspace eksperimen computer vision untuk membantu mendeteksi penyakit daun kak
 
 ## Menjalankan secara lokal
 
-~~~bash
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
-python Ibad/scripts/preprocess.py
-~~~
+1. Buat virtual environment di root repository dan instal dependensi proyek secara lokal.
+2. Jalankan `python preprocess.py` dari folder `project/` untuk menyiapkan direktori dataset.
 
 ## Keamanan dan batasan
 

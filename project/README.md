@@ -1,6 +1,6 @@
 # CocoaIntelliGuard - PKM-KC 2026
 
-Proyek Karsa Cipta (PKM-KC) dari Universitas Muhammadiyah Jember untuk mendeteksi penyakit buah dan daun kakao menggunakan perangkat portable berbasis **ESP32-CAM** dengan kemampuan **Edge AI Processing (Offline)** dan terintegrasi dengan **Web Dashboard Pemantau (Cloud)**.
+Proyek Karsa Cipta (PKM-KC) dari Perguruan Tinggi untuk mendeteksi penyakit buah dan daun kakao menggunakan perangkat portable berbasis **ESP32-CAM** dengan kemampuan **Edge AI Processing (Offline)** dan terintegrasi dengan **Web Dashboard Pemantau (Cloud)**.
 
 ---
 
@@ -30,7 +30,7 @@ pip install tensorflow roboflow matplotlib pillow
 ```
 
 ### 2. Compile & Upload Firmware
-Direkomendasikan menggunakan **VS Code** dengan ekstensi **PlatformIO IDE**. PlatformIO akan membaca [platformio.ini](file:///c:/TheGame/Money/PKM/Ibad/platformio.ini) dan menginstal pustaka C++ berikut secara otomatis:
+Direkomendasikan menggunakan **VS Code** dengan ekstensi **PlatformIO IDE**. PlatformIO akan membaca [platformio.ini](./platformio.ini) dan menginstal pustaka C++ berikut secara otomatis:
 * `Adafruit GFX Library`
 * `Adafruit ST7735 and ST7789 Library`
 * `Firebase ESP32 Client`
@@ -62,10 +62,10 @@ Direkomendasikan menggunakan **VS Code** dengan ekstensi **PlatformIO IDE**. Pla
 ### 2. Flashing ESP32-CAM (Offline & Online Mode)
 1. Buka folder root proyek ini di **VS Code** dengan ekstensi PlatformIO terpasang.
 2. Sambungkan ESP32-CAM ke laptop menggunakan modul FTDI (USB-to-TTL).
-3. Jika ingin mengaktifkan sinkronisasi database cloud: Ubah `#define ENABLE_CLOUD` menjadi `true` di [main.ino](file:///c:/TheGame/Money/PKM/Ibad/src/main.ino) dan sesuaikan kredensial Wi-Fi serta Firebase Anda.
+3. Jika ingin mengaktifkan sinkronisasi database cloud: Ubah `#define ENABLE_CLOUD` menjadi `true` di [main.ino](./src/main.ino) dan sesuaikan kredensial Wi-Fi serta Firebase Anda.
 4. Klik tombol **Build** ($\checkmark$) lalu **Upload** ($\rightarrow$) di status bar bagian bawah VS Code.
 
 ### 3. Membuka Dashboard Pemantau
-Buka file **[dashboard/index.html](file:///c:/TheGame/Money/PKM/Ibad/dashboard/index.html)** langsung di browser web Anda.
+Buka file **[dashboard/index.html](./dashboard/index.html)** langsung di browser web Anda.
 * Dashboard secara otomatis menggunakan **Demo Mode** (simulasi real-time) untuk demonstrasi antarmuka.
 * Jika Firebase Anda sudah aktif, dashboard akan mendengarkan data deteksi asli dari kebun secara real-time.

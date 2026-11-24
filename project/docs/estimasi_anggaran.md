@@ -1,5 +1,5 @@
 # Estimasi Rencana Anggaran Belanja (RAB) - CocoaIntelliGuard 🌸⚡
-**Proyek PKM-KC 2026 - Universitas Muhammadiyah Jember**
+**Proyek PKM-KC 2026 - Perguruan Tinggi**
 
 Dokumen ini memuat estimasi pengeluaran total untuk merealisasikan proyek CocoaIntelliGuard, mulai dari fabrikasi perangkat keras hingga administrasi publikasi luaran wajib PKM.
 
@@ -49,7 +49,7 @@ Digunakan untuk menunjang uji coba pengiriman data Firebase secara luring-daring
 ---
 
 ### Kategori 3: Perjalanan & Uji Coba Lapangan
-Biaya operasional untuk menguji performa alat secara langsung di perkebunan kakao lokal Jember (Puslitkoka).
+Biaya operasional untuk menguji performa alat secara langsung di perkebunan kakao lokal wilayah uji.
 
 | Aktivitas Perjalanan | Volume | Satuan | Harga Satuan (IDR) | Total Harga (IDR) |
 |----------------------|--------|--------|-------------------|-------------------|

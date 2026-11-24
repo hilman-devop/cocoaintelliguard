@@ -27,40 +27,29 @@ Kami telah berhasil menyelesaikan penulisan firmware offline/lokal untuk ESP32-C
 * Teks kelas diagnosis (e.g., `Kakao Sehat` dengan warna hijau, atau penyakit lain dengan warna merah) dan confidence score (warna kuning) akan menampilkan ukuran teks dinamis untuk menghindari teks terpotong.
 
 ### 4. Integrasi Wi-Fi & Firebase di ESP32-CAM
-* Menambahkan opsionalitas Wi-Fi dan pengiriman data Firebase menggunakan pustaka `Firebase ESP32 Client` (dikendalikan via saklar makro `#define ENABLE_CLOUD false` di file [main.ino](file:///c:/TheGame/Money/PKM/Ibad/src/main.ino) sehingga bisa diaktifkan/dimatikan dengan mudah).
+* Menambahkan opsionalitas Wi-Fi dan pengiriman data Firebase menggunakan pustaka `Firebase ESP32 Client` (dikendalikan via saklar makro `#define ENABLE_CLOUD false` di file [main.ino](./src/main.ino) sehingga bisa diaktifkan/dimatikan dengan mudah).
 
 ### 5. Web Dashboard Pemantau Premium (Glassmorphism UI)
-* Menerapkan desain gelap premium dengan efek Glassmorphism (`backdrop-filter`) di berkas [style.css](file:///c:/TheGame/Money/PKM/Ibad/dashboard/style.css).
-* Menggunakan **Chart.js** untuk merender grafik tren mingguan dan **Leaflet.js** untuk peta sebaran kebun di berkas [app.js](file:///c:/TheGame/Money/PKM/Ibad/dashboard/app.js).
+* Menerapkan desain gelap premium dengan efek Glassmorphism (`backdrop-filter`) di berkas [style.css](./dashboard/style.css).
+* Menggunakan **Chart.js** untuk merender grafik tren mingguan dan **Leaflet.js** untuk peta sebaran kebun di berkas [app.js](./dashboard/app.js).
 * Menyediakan fitur simulasi luring real-time (Demo Mode) ketika Firebase tidak terhubung agar dashboard tetap berfungsi interaktif saat di-load di browser.
-
----
-
-## Screenshot Hasil Pengujian Dashboard 📷
-
-````carousel
-![Tampilan Dashboard Awal](C:\Users\Elz\.gemini\antigravity-ide\brain\8aeb1e66-ae21-47d5-bfa6-1a859f1cc5d1\dashboard_loaded_1783448929453.png)
-<!-- slide -->
-![Tampilan Dashboard Setelah Simulasi Dijalankan](C:\Users\Elz\.gemini\antigravity-ide\brain\8aeb1e66-ae21-47d5-bfa6-1a859f1cc5d1\dashboard_verified_1783449017009.png)
-````
 
 ---
 
 ## Berkas yang Diperbarui & Ditambahkan 📂
 
-* **[main.ino](file:///c:/TheGame/Money/PKM/Ibad/src/main.ino)**: Kode program Arduino C++ utama untuk ESP32-CAM (Ditambahkan fitur cloud opsional).
-* **[platformio.ini](file:///c:/TheGame/Money/PKM/Ibad/platformio.ini)**: Konfigurasi compiler PlatformIO untuk mendownload libraries otomatis.
-* **[index.html](file:///c:/TheGame/Money/PKM/Ibad/dashboard/index.html)**: Struktur HTML5 Dashboard.
-* **[style.css](file:///c:/TheGame/Money/PKM/Ibad/dashboard/style.css)**: Gaya styling Glassmorphism UI.
-* **[app.js](file:///c:/TheGame/Money/PKM/Ibad/dashboard/app.js)**: Logika simulasi real-time, grafik, dan Leaflet map.
-* **[task.md](file:///c:/Users/Elz/.gemini/antigravity-ide/brain/8aeb1e66-ae21-47d5-bfa6-1a859f1cc5d1/task.md)**: Daftar tugas pengerjaan yang semuanya telah selesai ditandai.
-* **[estimasi_anggaran.md](file:///c:/TheGame/Money/PKM/Ibad/docs/estimasi_anggaran.md)**: Dokumen estimasi rencana anggaran biaya (RAB) proyek total.
+* **[main.ino](./src/main.ino)**: Kode program Arduino C++ utama untuk ESP32-CAM (Ditambahkan fitur cloud opsional).
+* **[platformio.ini](./platformio.ini)**: Konfigurasi compiler PlatformIO untuk mendownload libraries otomatis.
+* **[index.html](./dashboard/index.html)**: Struktur HTML5 Dashboard.
+* **[style.css](./dashboard/style.css)**: Gaya styling Glassmorphism UI.
+* **[app.js](./dashboard/app.js)**: Logika simulasi real-time, grafik, dan Leaflet map.
+* **[estimasi_anggaran.md](./docs/estimasi_anggaran.md)**: Dokumen estimasi rencana anggaran biaya (RAB) proyek total.
 
 ---
 
 ## Langkah Verifikasi Selanjutnya Menggunakan VS Code + PlatformIO 🖥️
 
-Kita telah menyediakan berkas [platformio.ini](file:///c:/TheGame/Money/PKM/Ibad/platformio.ini) di root proyek. Jadi, kamu tidak perlu mengunduh pustaka secara manual lagi!
+Kita telah menyediakan berkas [platformio.ini](./platformio.ini) di root proyek. Jadi, kamu tidak perlu mengunduh pustaka secara manual lagi!
 
 1. Buka folder proyek ini di **VS Code**.
 2. Instal ekstensi **PlatformIO IDE** dari Extension Marketplace VS Code.
@@ -70,4 +59,4 @@ Kita telah menyediakan berkas [platformio.ini](file:///c:/TheGame/Money/PKM/Ibad
    * Klik **Build** untuk melakukan kompilasi kode secara otomatis.
    * Klik **Upload** untuk mengunggah program ke ESP32-CAM.
    * Klik **Monitor** untuk membuka Serial Monitor (baud rate 115200) untuk melihat logs diagnosa.
-6. Untuk membuka Web Dashboard: Buka file [index.html](file:///c:/TheGame/Money/PKM/Ibad/dashboard/index.html) langsung di browser Chrome/Firefox kamu.
+6. Untuk membuka Web Dashboard: Buka file [index.html](./dashboard/index.html) langsung di browser Chrome/Firefox kamu.

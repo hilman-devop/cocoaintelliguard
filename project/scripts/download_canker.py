@@ -7,7 +7,7 @@ for attempt in range(1, max_retries + 1):
     try:
         print(f"[INFO] Mencoba mengunduh dataset (Percobaan {attempt}/{max_retries})...")
         rf = Roboflow(api_key="ROBOFLOW_API_KEY_DISINI")
-        project = rf.workspace("rahmayani").project("penyakit-fmvt8")
+        project = rf.workspace("workspace-anda").project("proyek-dataset-anda")
         print("[SUCCESS] Berhasil mengakses proyek 'penyakit-fmvt8'")
         
         dataset = project.version(1).download("yolov8")

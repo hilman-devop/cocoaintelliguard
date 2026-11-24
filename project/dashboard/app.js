@@ -2,7 +2,7 @@
 
 // 1. Firebase Configuration (Ganti dengan konfigurasi Firebase Anda)
 const firebaseConfig = {
-    databaseURL: "https://pkm-kc-ibad-default-rtdb.firebaseio.com" // Ubah sesuai Realtime Database Anda
+    databaseURL: "https://your-project-default-rtdb.firebaseio.com" // Ubah sesuai Realtime Database Anda
 };
 
 // State Global
@@ -15,8 +15,8 @@ let diseaseChartInstance = null;
 let leafletMap = null;
 let mapMarkers = [];
 
-// Koordinat Pusat Kebun (Puslitkoka Jember / Pusat Penelitian Kopi dan Kakao Indonesia)
-const PUSLITKOKA_COORDS = [-8.2582, 113.6163];
+// Koordinat Pusat Kebun (lokasi uji lapangan / lokasi uji lapangan)
+const DEMO_COORDS = [0, 0];
 
 // Data Rekomendasi Penanganan Penyakit Kakao
 const RECOMMENDATIONS = {
@@ -135,8 +135,8 @@ function initChart() {
 
 // 4. Inisialisasi Peta Leaflet.js
 function initMap() {
-    // Buat Peta terpusat di Puslitkoka Jember
-    leafletMap = L.map('map').setView(PUSLITKOKA_COORDS, 16);
+    // Buat Peta terpusat di lokasi uji lapangan
+    leafletMap = L.map('map').setView(DEMO_COORDS, 16);
 
     // Tile Layer peta gelap premium (CartoDB Dark Matter)
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
@@ -146,7 +146,7 @@ function initMap() {
     }).addTo(leafletMap);
 
     // Titik default instrumen alat CocoaIntelliGuard (Pusat Kebun)
-    L.marker(PUSLITKOKA_COORDS).addTo(leafletMap)
+    L.marker(DEMO_COORDS).addTo(leafletMap)
         .bindPopup("<b>CocoaIntelliGuard Node 1</b><br>Lokasi Base Station Utama.")
         .openPopup();
 }
@@ -159,10 +159,10 @@ function setupDemoMode() {
     
     // Inisialisasi log riwayat default
     const mockDetections = [
-        { time: "01:15:32", diagnosis: "Kakao Sehat", confidence: 99.3, lat: -8.2580, lng: 113.6160 },
-        { time: "01:12:45", diagnosis: "Busuk Buah", confidence: 96.5, lat: -8.2585, lng: 113.6165 },
-        { time: "01:08:12", diagnosis: "VSD", confidence: 92.4, lat: -8.2575, lng: 113.6158 },
-        { time: "01:02:50", diagnosis: "Kanker Batang", confidence: 95.1, lat: -8.2590, lng: 113.6170 }
+        { time: "01:15:32", diagnosis: "Kakao Sehat", confidence: 99.3, lat: 0.0002, lng: 0.0002 },
+        { time: "01:12:45", diagnosis: "Busuk Buah", confidence: 96.5, lat: -0.0002, lng: -0.0002 },
+        { time: "01:08:12", diagnosis: "VSD", confidence: 92.4, lat: 0.0003, lng: -0.0003 },
+        { time: "01:02:50", diagnosis: "Kanker Batang", confidence: 95.1, lat: -0.0003, lng: 0.0003 }
     ];
 
     mockDetections.forEach(data => {
@@ -177,8 +177,8 @@ function setupDemoMode() {
         const confidence = (85 + Math.random() * 14.8).toFixed(1);
         
         // Random koordinat di sekitar kebun
-        const lat = PUSLITKOKA_COORDS[0] + (Math.random() - 0.5) * 0.003;
-        const lng = PUSLITKOKA_COORDS[1] + (Math.random() - 0.5) * 0.003;
+        const lat = DEMO_COORDS[0] + (Math.random() - 0.5) * 0.003;
+        const lng = DEMO_COORDS[1] + (Math.random() - 0.5) * 0.003;
         
         const now = new Date();
         const timeStr = now.toTimeString().split(" ")[0];
